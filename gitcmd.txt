@@ -1,0 +1,21 @@
+  mkdir WorkDir
+  cd WorkDir/
+  yum install git
+  cp ../example.sh .
+  ls
+  cp ../index.sh .
+  ls
+  git init
+  ssh-keygen
+  vi ../../../root/.ssh/id_rsa.pub
+  ls
+  git add example.sh index.sh
+  git commit -a -m "Adding New files"
+  git config --global user.name "Your Name"
+  git config --global user.name "CVAMSY"
+  git config --global user.email chinnayagarivamsy@gmail.com
+  git remote add origin git@github.com:CVAMSY/MyProjects.git
+  git push -u origin master
+  git pull origin master
+  git push -u origin master
+
