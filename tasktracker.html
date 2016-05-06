@@ -1,0 +1,138 @@
+<html>
+<head>
+  <title>Sample Page</title>
+  <style type="text/css">
+  .tasktracker tbody tr:nth-child(2n) {
+  background-color: #e7e7e7;
+}
+
+table {
+  border-collapse: collapse;
+  border: 5px solid #eeeeee;
+  border-spacing: 5px;
+  margin-left: 15px;
+  width: 330px;
+}
+
+input {
+  background-color: #eeeeee;
+  width: 230px;
+  height: 20px;
+}
+
+button {
+  background-color: black;
+  line-height: 10px;
+  color: white;
+  height: 30px;
+  width: 60px;
+  text-align: center;
+}
+
+#main {
+  height: 1000px;
+  width: 1000px;
+}
+
+#header {
+  border: 1px solid black;
+  border-spacing: 5px;
+  background-color: #eeeeee;
+  color: black;
+  text-align: left;
+  height: 450px;
+  width: 650px;
+  padding: 20px;
+  position: absolute;
+  top: 10%;
+  left: 25%;
+}
+
+#nav-left {
+  background-color: white;
+  line-height: 30px;
+  margin-left: -12px;
+  color: black;
+  height: 315px;
+  width: 269px;
+  float: left;
+  padding: 10px;
+  text-align: left;
+  left: 5px;
+}
+
+#nav-right {
+  background-color: white;
+  margin-left: 3px;
+  color: black;
+  height: 305px;
+  width: 340px;
+  float: left;
+  padding: 15px;
+  line-height: 25px;
+  overflow-x: scroll;
+}
+
+  </style>
+</head>
+<body>
+<body class="main">
+<div id="header">
+<h2>Task Tracker <br><p>V2.0</p></h2>
+
+<div id="nav-left">
+<h4>Create a Task</h4>
+<form name="input_form">
+  <lable>Task Name:<br></lable>
+  <input type="textbox" name="taskname" maxlength="15" id="msg"><br>
+  <lable>Date:</lable> <br>
+  <input type="date" name="date" maxlength="15" id="textbox2"><br>
+  <lable>Assigned To:</lable><br>
+  <input type="text"  id="textbox3" name="assigned" pattern="[A-Za-z]{1,20}"> </input><br/><br/>
+
+  <input type="submit" id="submit_type" form="nameform" value="Submit"></input>
+
+</form>
+
+</div>
+<div id="nav-right">
+  <h4>Existing Tasks</h4>
+            <table class="tasktracker">
+              <tbody></tbody>
+              <tfoot></tfoot>
+            </table>
+</div>
+</div>
+<script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.0.0-beta1/jquery.js"></script>
+<script>
+ var tasktracker = [{"name": "Test Task#1","date":"12/07/2012","assigned": "John Doe"},
+                  {"name": "Test Task#2","date": "12/07/2012","assigned": "John Doe"},
+                  {"name": "Test Task#3","date": "12/07/2012","assigned": "John Doe"},
+                  {"name": "Test Task#4","date": "12/07/2012","assigned": "John Doe"},
+                  {"name": "Test Task#5","date": "12/07/2012","assigned": "John Doe"},
+                  {"name": "Test Task#6","date": "12/07/2012","assigned": "John Doe"},
+                  {"name": "Test Task#7","date": "12/07/2012","assigned": "John Doe"}];
+              
+
+         function createDataTable(dataArray){
+          $(".tasktracker tbody").empty();
+          for(var i in dataArray){
+           var tr = "<tr><td>" + dataArray[i].name + "</td><td>"+ dataArray[i].date + "</td><td>" + dataArray[i].assigned + "</td></tr>";
+              $(".tasktracker tbody").append(tr);
+            }
+          }
+          createDataTable(tasktracker);
+
+          $("#submit_type").click(function () {
+            var task_new = {};
+            task_new.name= input_form.taskname.value;
+            task_new.date= input_form.date.value;
+            task_new.assigned = input_form.assigned.value;
+            tasktracker.push(task_new);
+           // var tr = "<tr><td>" + task_new.name + "</td><td>"+ task_new.date + "</td><td>" + task_new.assigned + "</td></tr>";
+            //  $(".tasktracker tbody").append(tr);
+            createDataTable(tasktracker);
+    });
+</script>
+</body>
+</body>
