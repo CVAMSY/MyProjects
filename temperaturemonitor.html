@@ -1,0 +1,73 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.4.9/angular.min.js"></script>
+        <script>
+
+            angular.module('App', []).controller(
+                'AppController',
+                [
+                    '$scope',
+                    function($scope) {
+                        
+                        $scope.TemperatureMonitor = {
+                            recordTemperature: [],
+                            getCurrentMedian : ''
+                        };
+                         $scope.isError = false;
+                        $scope.addValue = function () {
+                     
+                             if(isNaN($scope.arrayValue))
+                                $scope.isError = true;
+                            else
+                                $scope.TemperatureMonitor.recordTemperature.push(Number($scope.arrayValue));
+
+                        };
+                       
+                        $scope.getSomeCalcValue = function () {
+                            $scope.TemperatureMonitor.recordTemperature.sort();
+                            var len = $scope.TemperatureMonitor.recordTemperature.length;
+                            var med = len/2;
+
+                            if(len%2){
+                                $scope.TemperatureMonitor.getCurrentMedian = $scope.TemperatureMonitor.recordTemperature[Math.round(med)-1];
+                            }else{
+                                var x = $scope.TemperatureMonitor.recordTemperature[med-1] + $scope.TemperatureMonitor.recordTemperature[med];
+                                $scope.TemperatureMonitor.getCurrentMedian= x/2;
+                            }
+                        };
+                    }
+                ]
+            );
+        </script>
+    </head>
+<body ng-app="App" ng-controller="AppController">
+  <h1>Temperature Monitor</h1>
+  <form name="temp">
+    <label for="temperature">Add Temperature:</label>
+    <input ng-model="arrayValue" name="temperature" id="temperature" ng-pattern="/^-?[0-9]+$/">
+    <span style='color:red;' ng-show="temp.temperature.$error.pattern">Please enter valid number.</span>
+    <br/>
+    <button ng-click="addValue()" ng-disabled="temp.temperature.$error.pattern">Add</button>
+  </form>
+  <hr />
+  <section>
+    Array values: {{TemperatureMonitor.recordTemperature}}
+    <br />
+    <br />
+    <button ng-click="getSomeCalcValue()">Get Median Temperture</button>
+
+    <br /> Current Median: {{TemperatureMonitor.getCurrentMedian}}
+  </section>
+
+  <hr>
+  <hr>
+  <p>developer name: Vamsy Chinnayagari</p>
+
+  <hr>
+  <a href="jasmine-test-runner.html">Run Unit Tests</a>
+  <script data-require="angular.js@*" data-semver="1.3.5" src="https://code.angularjs.org/1.3.5/angular.js"></script>
+  <script src="app.js"></script>
+  <script src="script.js"></script>
+</body>
+</html>
