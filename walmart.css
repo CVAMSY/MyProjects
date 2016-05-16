@@ -1,0 +1,56 @@
+body,.main{
+	height: 600px;
+	max-width: 1250px;
+	background-color: lightblue;
+}
+.menubtn{
+	margin: 15px 0px 0px 50px;
+}
+.exportbtn{
+	float: right;
+	margin: 15px 280px 0px 0px;
+}
+span{
+
+	font-weight: bold;
+	margin-left: 240px;
+}
+table label span{
+	font-size: 12px;
+	margin: 0px;             
+	font-weight: normal;
+}
+
+.section,p{
+	margin-left: 10px;
+	margin-top:35px;
+	font-weight: bold;
+	width: 800px;
+}
+.report-details{
+    width: 925px;
+    background-color: lightgrey;
+	text-align: right;
+}
+
+ input,select{
+     float:left;
+}
+.errorMsg {color:red;}
+#reporttable{
+	padding-left: 10px;
+}
+.report{
+	border-collapse: collapse;
+	text-align: center;
+	background-color: lightgrey;
+
+}
+
+.hide{
+	display: none;
+}
+img{
+	width: 15px;
+	height: 15px;
+}

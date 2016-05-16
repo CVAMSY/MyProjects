@@ -1,0 +1,105 @@
+<!DOCTYPE>
+<html>
+<head>
+	<title>Walmart Report details</title>
+	<link rel="stylesheet" type="text/css" href="./css/walmart.css">
+	<script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.0.0-beta1/jquery.js"></script>
+	<script type="text/javascript" src="http://ajax.aspnetcdn.com/ajax/jquery.validate/1.15.0/jquery.validate.js"></script>
+	<script type="text/javascript" src="./js/walmart.js"></script>	
+	<script type="text/javascript" src="./js/validations.js"></script>	
+</head>
+<body>
+<div class="main">
+<button class="menubtn"> Main Menu</button>
+<span>Straw Purchase Report</span>
+<button class="exportbtn">Export to Excel</button>
+	<div class="section">
+	
+	<p>Please enter required fields and proceed with the search option</p>
+               <form id="reportdetails">
+               <fieldset class="checkForm">
+               	<div class='errorMsg'></div>
+                  <legend>Report search Criteria</legend>
+                  <table class="report-details">
+                  <tbody>
+
+                <tr>
+				  <td><label class = "firstLabel" for="transaction_date_from">Transaction Date From:</label></td>
+				  <td><input id="transaction_date_from" tabindex="1" name="inputfield" type="date" value=""></td>
+				  <td><label  class = "firstLabel" for="TDF">Customer's First Name:</label></td>
+				  <td><input id="cfname" name="inputfield" type="text" value="" tabindex="5" minlength="2" ></td>
+				</tr>
+
+                <tr> 
+                  <td><label class = "firstLabel" for="TDT">Transaction Date To:</label></td>
+                  <td><input id="tdt" name="inputfield" type="date" value="" tabindex="2"></td>
+                  <td><label for="TDT">Customer's Last Name:</label></td>
+                  <td><input id="clname" name="inputfield" type="text" value="" tabindex="6" minlength="2" ></td>
+                  <td><input type="button" name="search" value="Search" id="search"></td>
+                </tr>
+                <tr>
+                	<td><label for="SNO">Store Number:</br><span>(Leave blank for all stores)</span></label></td>
+                	<td><input id="sno" name="inputfield" type="text" value="" tabindex="3" onkeypress="return numbersonly(event)"></td>
+                	<td><label for="TDF">Associate's First Name:</label></td>
+                	<td><input id="afname" name="inputfield" type="text" value="" tabindex="7" minlength="2" ></td>
+
+                </tr>
+                <tr>
+                  <td><label for="App">Status Application:</label></td>
+                  <td><select name="dropdown" id="dropdown" tabindex="4">
+                          <option value="-1" selected>Select Status</option>
+                          <option value="pending">Pending</option>
+                          <option value="" ="Processed">Processed</option>
+                          <option value="Approved">Approved</option>
+                          <option value="Application Denied">Application Denied</option>
+                       </select></td>
+                  <td><label for="TDT">Associate's Last name:</label></td>
+                  <td><input id="alname" name="inputfield" type="text" value="" tabindex="8" minlength="2" ></td>
+                  <td> <input type="reset" id="clearall" value="Clear all"></td>
+                </tr>
+
+                <tr>
+                <td></td>
+                <td></td>
+                <td><label for="TDF">Associate's User ID:</label></td>	
+                <td><input id="uid" name="inputfield" type="text" tabindex="9" value=""></td>
+                </tr>
+                  </tbody>
+                   </table>
+               </fieldset>
+                
+               </form>
+	</div>
+
+
+	<div id="reporttable" class='hide'>
+          <fieldset>
+          <legend> Report details:</legend>
+            <table class="report" border="1">
+            <thead>
+            	<tr>
+            	    <th>S.NO</th>
+            		<th>Transaction Date</th>
+            		<th>Store number</th>
+            		<th>status</th>
+            		<th>Customer First Name</th>
+            		<th>Customer last name</th>
+            		<th>Customer's MI</th>
+            		<th>Customer's Add</th>
+            		<th>Customer's DOB</th>
+            		<th>Associate's Last name</th>
+            		<th>Associate's First name</th>
+            		<th>Associte's UID:</th>
+            		<th></th>
+            	</tr>
+            </thead>
+              <tbody>
+              </tbody>
+            </table>
+           </fieldset>
+</div>
+</div>
+
+
+</body>
+</html>
