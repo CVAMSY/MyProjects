@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html ng-app="myApp">
+<head>
+	<title>Robert Half Assessment test</title>
+	<link rel="stylesheet" type="text/css" href="app/libs/css/bootstrap.min.css"/>
+	<link rel="stylesheet" type="text/css" href="app/css/app.css"/>
+</head>
+<body ng-controller="myCtrl">
+	<div class="container">
+
+		<div class="row form-search">
+			<div class="col-md-12 col-xs-12">
+				<div class="col-md-3 col-xs-6">
+					<input type="text" class="form-control" ng-model="person" placeholder="Enter your text here..."/>	
+				</div>
+				<div class="col-md-9 col-xs-6">
+					<!-- <input type="button" value="Search" class="btn btn-primary btn-sm"> -->
+					<span class="helptext">* Enter text here to filter the data. Ex: Phillip, Jimmy etc..</span>
+				</div>
+			</div>
+		</div>
+
+		<div class="row results">
+				<div class="col-md-3 col-sm-4 col-xs-12" ng-repeat="x in tableData | filter:{'name':  person} ">
+					<div ng-class="x.gender" ng-if="person">
+						<h4>{{x.name}}</h4>
+						<div>{{x.email}}</div>
+						<div>{{x.city}}</div>	
+					</div>
+				</div>
+		</div>
+	</div>
+
+	<script src="app/libs/js/angular.min.js"></script>
+	<script type="text/javascript" src="app/controllers/app.js"></script>
+</body>
+</html>
